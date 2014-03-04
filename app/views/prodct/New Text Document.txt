@@ -1,0 +1,17 @@
+<h1>Edit Product Details</h1>
+
+
+<%= form_for @prodct, action: 'update' do |f| %>
+<p> Name: <%= f.text_field :name %> </p>
+<p>Description: <br> </p>
+<p><%= f.text_area :description %> </p>
+<p>Price: <%= f.text_field :price %> </p>
+<%= radio_button :prodct, :availability, 'In Stock' %>In Stock
+<%= radio_button :prodct, :availability, 'Back ordered' %>Back ordered
+<hr/>
+
+<p><%= f.submit 'Save changes'%> <%= link_to 'Back', {:action => 'list'} %> </p>
+<% end %>
+
+
+

@@ -1,0 +1,54 @@
+<head>
+<style>
+body {
+margin-left:2cm;
+font-size:20px;
+}
+table
+{
+ margin-top: 1em;
+border-collapse:collapse;
+}
+td
+{
+height:50px;
+vertical-align:top;
+}
+#checkoutbutton {
+    background-color: #33FF00;
+  
+  -webkit-border-radius: 15px;
+ 
+}
+</style>
+</head>
+<body bgcolor="#D8D8D8">
+
+<h2> <u> <%=@prodct.name%> </u> </h1>
+<br>
+<table>
+<tr>
+<td>
+<%= image_tag "#{@prodct.imgurl}",width:150,height:150,align:"Left",hspace:10,vspace:10  %> 
+</td>
+<td > <br>
+Description: <%=@prodct.description %>
+</td>
+</tr>
+</table>
+<br>
+Price: <%=@prodct.price%>
+<br>
+Availability: <%=@prodct.availability%>
+<hr/>
+<table cellpadding=0 width=30%>
+<tr >
+<td >
+<b> <%= link_to 'Edit', {:action => "edit"} %></b>        </td>
+<td > 
+<b> <%= link_to 'Delete', prodct_path(@prodct),
+                    method: :delete, data: { confirm: 'Are you sure?' } %>
+</td>
+	<td >
+<b> <%= link_to 'See all products', {:action => "list"}  %></b>
+</td>

@@ -1,0 +1,145 @@
+<head>
+<style>
+input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgba(81, 203, 238, 1);
+  border-radius:7px;
+}
+
+body {
+margin-left:2cm;
+font-size:20px;
+}
+textarea:focus, input:focus {
+border: 1px solid #09C;
+}
+table
+{
+border-collapse:collapse;
+
+}
+td
+{
+height:50px;
+vertical-align:top;
+}
+.button {
+
+	-webkit-box-shadow:inset 0px 1px 2px 0px #ffffff;
+	box-shadow:inset 0px 1px 2px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-webkit-border-top-left-radius:6px;
+	
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+
+	border-bottom-left-radius:6px;
+	text-indent:-0.89px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:11px;
+	font-weight:bold;
+	font-style:normal;
+	height:21px;
+	line-height:21px;
+	width:89px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 6px #ffffff;
+}
+.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}
+.button:active {
+	position:relative;
+	top:1px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+  border-radius:7px;
+}
+ 
+
+</style>
+</head>
+<body bgcolor="#D8D8D8">
+
+<div align=left>
+<h1>Edit Product Details</h1>
+
+
+<%= form_for @prodct, action: 'update' do |f| %>
+<% if @prodct.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@prodct.errors.count, "error") %> prohibited
+      this product from being saved:</h2>
+    <ul>
+    <% @prodct.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+<table width=30%>
+  <tr>
+  <td>
+ Name: </td>
+<td> <%= f.text_field :name %> </td>
+</tr>
+<tr>
+<td>Description: </td> 
+<td><%= f.text_area :description %> </td>
+</tr>
+<tr>
+<td>
+
+Img Url: </td> <td> <%= f.text_field :imgurl %> </td> </tr>
+<tr>
+<td>Price: </td> <td> <%= f.text_field :price %> </td> </tr>
+<tr>
+<td>Availability: </td>
+<td>
+<%= radio_button :prodct, :availability, 'In Stock' %>In Stock
+<%= radio_button :prodct, :availability, 'Back ordered' %>Back ordered
+</td>
+</tr>
+<tr>
+<td>
+
+<%= f.submit 'Save changes',class: 'button'%> </td> <td> <%= link_to 'Back', {:action => 'list'} %> </td>
+</tr>
+<% end %>
+
+
+</div>

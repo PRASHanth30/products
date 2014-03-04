@@ -1,0 +1,59 @@
+<head>
+<style>
+table.main {border:thin #000000 solid;
+box-shadow: 10px 10px 5px #888888;
+background-color: #F5EFFB 
+}
+body {
+margin-left:2cm;
+font-size:20px;
+}
+</style>
+</head>
+<body bgcolor="#D8D8D8">
+<p> <h2> Top Products </h2> </p>
+<% p=0
+@prodcts.each do |c|  
+p=p+1
+end
+%>
+<h5> Best-Sellers( <%= p %> ) </h5>
+<div>
+<table class=main border=0>
+<tr>
+<% @prdcts.each do |c| %>
+
+<td> <%= link_to image_tag("#{c.imgurl}",width:150,height:150,align:"Left",hspace:10,vspace:10,border:1) ,{:action => 'show', :id => c.id} %>  </td>
+<% end %>
+</tr>
+<tr>
+<% @prdcts.each do |c| %>
+<td align=center > <u> <%= link_to c.name, {:action => 'show', :id => c.id} -%> </u> </td>
+<% end %>
+</tr>
+</table>
+</div>
+<table width=30% >
+<tr>
+<br>
+<td> <h2> All Products </h2> </td> <td> <b> <%= link_to "Add new product", {:action => 'new' }%> </b> </td> </tr> 
+
+</table>
+<table width=50%>
+<tr>
+<ul id="books">
+<% i=0 %>
+<% @prodcts.each do |c|  %>
+<%
+if (i%3)==0 %>
+<tr>
+<% end %>
+
+<td>
+<li><%= link_to c.name, {:action => 'show', :id => c.id} -%></li>
+</td>
+
+<% i=i+1 %>
+<% end %>
+</ul>
+</table>
